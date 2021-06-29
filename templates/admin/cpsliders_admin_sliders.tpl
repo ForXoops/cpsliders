@@ -8,7 +8,8 @@
 
 <{if $form != ''}>
     <{$form}>
-<{else}>
+<{/if}>
+<{if $sliders_count|default:0 != 0}>
     <table class="outer tablesorter">
         <tr>
             <th><{$smarty.const._AM_CPSLIDERS_SLIDERS_TITLE}></th>

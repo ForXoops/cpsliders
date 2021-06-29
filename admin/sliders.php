@@ -42,7 +42,27 @@ switch ($op) {
     default:
         $adminObject->addItemButton(_AM_CPSLIDERS_SLIDERS_ADD, $currentFile . '?op=add', 'add');
         $xoopsTpl->assign('renderbutton', $adminObject->renderButton());     
-        $xoopsTpl->assign('sliders', $slidersHandler->getObjects(null, true, false));
+        
+        $criteria = new \CriteriaCompo();
+        $criteria->setSort('slider_title');
+        $criteria->setOrder('ASC');
+
+        $sliders_arr = $slidersHandler->getall($criteria);
+        $sliders_count = $slidersHandler->getCount($criteria);
+
+        $xoopsTpl->assign('sliders_count', $sliders_count);
+        if($sliders_count == 0) {
+            $xoopsTpl->assign('message_error', _AM_CPSLIDERS_THEREARENT_SLIDERS);
+        }
+
+        $sliders = [];
+        foreach (array_keys($sliders_arr) as $i) {
+            $slider["slider_id"] = $sliders_arr[$i]->getVar('slider_id');
+            $slider["slider_title"] = $sliders_arr[$i]->getVar('slider_title');
+            $sliders[] = $slider;
+        }
+        $xoopsTpl->assign('sliders', $sliders);
+
         break;
     case 'add':
         // Module admin

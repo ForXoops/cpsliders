@@ -29,9 +29,9 @@ $moduleDirNameUpper = \mb_strtoupper($moduleDirName);
 // ------------------- Informations ------------------- //
 $modversion = [
 	'name'                => _MI_CPSLIDERS_NAME,
-	'version'             => 1.0,
+	'version'             => 1.1,
 	'description'         => _MI_CPSLIDERS_DESC,
-	'author'              => 'Dorian',
+	'author'              => 'Dorian, ForMuss',
 	'author_mail'         => 'info@email.com',
 	'author_website_url'  => 'http://xoops.org',
 	'author_website_name' => 'XOOPS Project',
@@ -48,7 +48,7 @@ $modversion = [
 	'min_xoops'           => '2.5.9',
 	'min_admin'           => '1.2',
 	'min_db'              => ['mysql' => '5.5', 'mysqli' => '5.5'],
-	'image'               => 'assets/images/logo-cpsliders.png',
+	'image'               => 'assets/images/logo.png',
 	'dirname'             => \basename(__DIR__),
 	'dirmoduleadmin'      => 'Frameworks/moduleclasses/moduleadmin',
 	'sysicons16'          => '../../Frameworks/moduleclasses/icons/16',
@@ -81,11 +81,6 @@ $modversion['templates'] = [
 	['file' => 'cpsliders_admin_sliders.tpl', 'description' => '', 'type' => 'admin'],
 	['file' => 'cpsliders_admin_elements.tpl', 'description' => '', 'type' => 'admin'],
 	['file' => 'cpsliders_admin_footer.tpl', 'description' => '', 'type' => 'admin'],
-	// User templates
-	['file' => 'cpsliders_header.tpl', 'description' => ''],
-	['file' => 'cpsliders_index.tpl', 'description' => ''],
-	['file' => 'cpsliders_breadcrumbs.tpl', 'description' => ''],
-	['file' => 'cpsliders_footer.tpl', 'description' => ''],
 ];
 // ------------------- Mysql ------------------- //
 $modversion['sqlfile']['mysql'] = 'sql/mysql.sql';
@@ -98,11 +93,11 @@ $modversion['tables'] = [
 // ------------------- Blocks ------------------- //
 $modversion['blocks'][] = [
     'file'        => $moduleDirName . '_block.php',
-    'name'        => "blocktest",
-    'description' => "description bloc",
+    'name'        => _MI_CPSLIDERS_BLOCK1,
+    'description' => _MI_CPSLIDERS_BLOCK1_DESC,
     'show_func'   => $moduleDirName . '_block_show',
     'edit_func'   => $moduleDirName . '_block_edit',
-    'options'     => '0|5000|carousel|0', // id_slider|interval(ms)|type(carousel ou logos)|unique_id
+    'options'     => '0|5000|carousel|block|0', // id_slider|interval(ms)|type(carousel ou logos)|type|unique_id
     'template'    => $moduleDirName . '_block.tpl'
 ];
 

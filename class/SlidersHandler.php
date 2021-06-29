@@ -65,15 +65,19 @@ class SlidersHandler extends \XoopsPersistableObjectHandler
 
                     $carousel_items      .= ( $el_num == 0 ? '<div class="carousel-item active"' : '<div class="carousel-item"' );
                     $carousel_items      .= ' data-interval="'.$interval.'">';
-                    $carousel_items      .= '<a href="';
-                    $carousel_items      .= ( empty($elements_arr[$i]->getVar('element_url')) ? '#' : $elements_arr[$i]->getVar('element_url') );
-                    $carousel_items      .= '">';
+                    if(($elements_arr[$i]->getVar('element_url')) != '') {
+                        $carousel_items      .= '<a href="';
+                        $carousel_items      .= ( empty($elements_arr[$i]->getVar('element_url')) ? '#' : $elements_arr[$i]->getVar('element_url') );
+                        $carousel_items      .= '">';
+                    }
                     $carousel_items      .= '<img src="'.XOOPS_UPLOAD_URL . '/cpsliders/images/elements/' . $elements_arr[$i]->getVar('element_img') . '" class="d-block w-100" alt="...">';
                     $carousel_items      .= '<div class="carousel-caption">';
                     $carousel_items      .= '<h5>'.$elements_arr[$i]->getVar('element_title').'</h5>';
                     $carousel_items      .= '<p>'.$elements_arr[$i]->getVar('element_description').'</p>';
                     $carousel_items      .= '</div>';
-                    $carousel_items      .= '</a>';
+                    if(($elements_arr[$i]->getVar('element_url')) != '') {
+                        $carousel_items      .= '</a>';
+                    }
                     $carousel_items      .= '</div>';
                     
                     $el_num++;
@@ -105,11 +109,16 @@ class SlidersHandler extends \XoopsPersistableObjectHandler
                 $logos_items = "";
                 foreach (array_keys($elements_arr) as $i) {
                     $logos_items .= '<div class="slide">';
-                    $logos_items .= '<a href="';
-                    $logos_items .= ( empty($elements_arr[$i]->getVar('element_url')) ? '#' : $elements_arr[$i]->getVar('element_url') );
-                    $logos_items .= '" target="_blank">';
+                    if(($elements_arr[$i]->getVar('element_url')) != '') {
+                        $logos_items .= '<a href="';
+                        $logos_items .= ( empty($elements_arr[$i]->getVar('element_url')) ? '#' : $elements_arr[$i]->getVar('element_url') );
+                        $logos_items .= '" target="_blank">';
+                    }
                     $logos_items .= '<img class="p-auto" src="'.XOOPS_UPLOAD_URL . '/cpsliders/images/elements/' . $elements_arr[$i]->getVar('element_img') .'" width="238">';
-                    $logos_items .=  '</a></div>';
+                    if(($elements_arr[$i]->getVar('element_url')) != '') {
+                        $logos_items .=  '</a>';
+                    }
+                    $logos_items .=  '</div>';
                 }
 
                 $result .= '<section class="customer-logos slider">';

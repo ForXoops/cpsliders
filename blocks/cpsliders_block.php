@@ -34,7 +34,7 @@ function cpsliders_block_show($options)
     $helper = \XoopsModules\Cpsliders\Helper::getInstance();
     $slidersHandler = $helper->getHandler('Sliders');
     $elementsHandler = $helper->getHandler('Elements');
-    $helper = \XoopsModules\Mymenus\Helper::getInstance();
+    $helper = \XoopsModules\Cpsliders\Helper::getInstance();
 
     $block              = [];
     $block["slider_id"] = $options[0];
@@ -43,20 +43,25 @@ function cpsliders_block_show($options)
     $block["content"]   = $slidersHandler->renderSlider($block["slider_id"], $block["interval"], $block["type"]);
  
     if ( $block["type"] == 'logos' ) {
+        $GLOBALS['xoTheme']->addScript("browse.php?Frameworks/jquery/jquery.js");
         $GLOBALS['xoTheme']->addScript(CPSLIDERS_URL . '/assets/js/slick.js');
         $GLOBALS['xoTheme']->addScript(CPSLIDERS_URL . '/assets/js/cpsliders.js');
         $GLOBALS['xoTheme']->addStylesheet(CPSLIDERS_URL . '/assets/css/slick.css');
+        $GLOBALS['xoTheme']->addStylesheet(CPSLIDERS_URL . '/assets/css/style.css');
     } 
 
-    $GLOBALS['xoopsTpl']->assign("xoops_cpsliders_" . $options[3], $block["content"]);
+    if ('template' === $options[3]) {
+        $GLOBALS['xoopsTpl']->assign("xoops_cpsliders_" . $options[4], $block["content"]);
+        $block = false;
+    }
 
-    return false;
+    return $block;
 }
 
 /**
  * Create HTML for block editing functionality
  *
- * @param array $options array( 0 => id_slider| 1 => interval(ms)| 2 => type(carousel ou logos)| 3 => unique_id )
+ * @param array $options array( 0 => id_slider| 1 => interval(ms)| 2 => type(carousel ou logos)| 3 => type | 4 => unique_id )
  *
  * @return string html for edit form
  */
@@ -82,16 +87,27 @@ function cpsliders_block_edit($options)
     $eleInterval = new \XoopsFormText(_AM_CPSLIDERS_BLOCK_SLIDER_INTERVAL, 'options[1]', 10, 10, $options[1]);
     $eleInterval->setDescription(_AM_CPSLIDERS_BLOCK_SLIDER_INTERVAL_DESC);
     $form->addElement($eleInterval);
-    $sliderTypeSelect = new \XoopsFormSelect("Type", 'options[2]', $options[2]);
-    $sliderTypeSelect->addOption('carousel', 'carousel');
-    $sliderTypeSelect->addOption('logos', 'logos');
+
+    $sliderTypeSelect = new \XoopsFormSelect(_AM_CPSLIDERS_BLOCK_SLIDER_TYPE, 'options[2]', $options[2]);
+    $sliderTypeSelect->addOption('carousel', _AM_CPSLIDERS_BLOCK_SLIDER_TYPE_OPTN1 );
+    $sliderTypeSelect->addOption('logos', _AM_CPSLIDERS_BLOCK_SLIDER_TYPE_OPTN2);
     $form->addElement($sliderTypeSelect);
 
-    if ($options[3] == 0) {
-        $options[3] = time();
+    // option 3: displayMethod
+    $displayMethodsList      = [
+        'block'    => _MB_CPSLIDERS_DISPLAY_METHOD_BLOCK,
+        'template' => _MB_CPSLIDERS_DISPLAY_METHOD_TEMPLATE
+    ];
+    $formDisplayMethodSelect = new XoopsFormSelect(_MB_CPSLIDERS_DISPLAY_METHOD, 'options[3]', $options[3], 1);
+    $formDisplayMethodSelect->setDescription(_MB_CPSLIDERS_DISPLAY_METHOD_DSC);
+    $formDisplayMethodSelect->addOptionArray($displayMethodsList);
+    $form->addElement( $formDisplayMethodSelect);
+
+    if ($options[4] == 0) {
+        $options[4] = time();
     } 
 
-    $eleUniqueID = new \XoopsFormText(_AM_CPSLIDERS_BLOCK_SLIDER_UNIQUE_ID, 'options[3]', 50, 255, $options[3]);
+    $eleUniqueID = new \XoopsFormText(_AM_CPSLIDERS_BLOCK_SLIDER_UNIQUE_ID, 'options[4]', 50, 255, $options[4]);
     $eleUniqueID->setDescription(_AM_CPSLIDERS_BLOCK_SLIDER_UNIQUE_ID_DESC);
     $form->addElement($eleUniqueID);
 

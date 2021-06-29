@@ -137,7 +137,7 @@ switch ($op) {
             include_once XOOPS_ROOT_PATH . '/class/uploader.php';
             $upload_size = $helper->getConfig('maxsize_image', 104858);
             $uploader_element_img = new \XoopsMediaUploader($uploadirectory, ['image/gif', 'image/jpeg', 'image/pjpeg', 'image/x-png', 'image/png'], $upload_size, null, null);
-            if ($uploader_element_img->fetchMedia('element_img')) {
+            if ($uploader_element_img->fetchMedia('element_img2_href')) {
                 $uploader_element_img->setPrefix('el_');
                 if (!$uploader_element_img->upload()) {
                     $error .= $uploader_element_img->getErrors() . '<br>';

@@ -30,5 +30,14 @@ define('_AM_CPSLIDERS_BLOCK_SLIDER_TOSHOW', 'Slider to show');
 define('_AM_CPSLIDERS_BLOCK_SLIDER_TOSHOW_NONE', 'None');
 define('_AM_CPSLIDERS_BLOCK_SLIDER_INTERVAL', 'interval(ms)');
 define('_AM_CPSLIDERS_BLOCK_SLIDER_INTERVAL_DESC', 'Only for bootstrap slider');
-define('_AM_CPSLIDERS_BLOCK_SLIDER_UNIQUE_ID', 'Unique ID xoops_cpsliders_');
+define('_AM_CPSLIDERS_BLOCK_SLIDER_TYPE', "Type");
+define('_AM_CPSLIDERS_BLOCK_SLIDER_TYPE_OPTN1', "Bootsrap 4 Carousel");
+define('_AM_CPSLIDERS_BLOCK_SLIDER_TYPE_OPTN2', "Slick Logos");
+
+define('_AM_CPSLIDERS_BLOCK_SLIDER_UNIQUE_ID', 'Unique ID');
 define('_AM_CPSLIDERS_BLOCK_SLIDER_UNIQUE_ID_DESC', '<span style="color:red">do not modify !</span>');
+
+define('_MB_CPSLIDERS_DISPLAY_METHOD', 'Display Method');
+define('_MB_CPSLIDERS_DISPLAY_METHOD_DSC', 'If you choose assign to the template, then you can use <{xoops_cpsliders_' . _AM_CPSLIDERS_BLOCK_SLIDER_UNIQUE_ID . '}> in your theme');
+define('_MB_CPSLIDERS_DISPLAY_METHOD_BLOCK', 'Display this block');
+define('_MB_CPSLIDERS_DISPLAY_METHOD_TEMPLATE', 'Assign to template');

@@ -39,8 +39,8 @@ $countElements = $elementsHandler->getCount();
 // InfoBox Statistics
 $adminObject->addInfoBox(_AM_CPSLIDERS_STATISTICS);
 // Info elements
-$adminObject->addInfoBoxLine(\sprintf( '<label>' . _AM_CPSLIDERS_THEREARE_SLIDERS . '</label>', $countSliders));
-$adminObject->addInfoBoxLine(\sprintf( '<label>' . _AM_CPSLIDERS_THEREARE_ELEMENTS . '</label>', $countElements));
+$adminObject->addInfoBoxLine(\sprintf( _AM_CPSLIDERS_THEREARE_SLIDERS, $countSliders));
+$adminObject->addInfoBoxLine(\sprintf( _AM_CPSLIDERS_THEREARE_ELEMENTS, $countElements));
 // Render Index
 $GLOBALS['xoopsTpl']->assign('navigation', $adminObject->displayNavigation('index.php'));
 // Test Data

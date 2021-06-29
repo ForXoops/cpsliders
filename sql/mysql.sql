@@ -15,7 +15,7 @@ CREATE TABLE `cpsliders_sliders` (
   `slider_id` INT(8) UNSIGNED NOT NULL AUTO_INCREMENT,
   `slider_title` VARCHAR(255) NOT NULL DEFAULT '',
   PRIMARY KEY (`slider_id`)
-) ENGINE=MyISAM;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 #
 # Structure table for `cpsliders_elements`
@@ -27,8 +27,8 @@ CREATE TABLE `cpsliders_elements` (
   `element_description` VARCHAR(255) NOT NULL DEFAULT '',
   `element_img` VARCHAR(255) NOT NULL DEFAULT '',
   `element_url` VARCHAR(255) NOT NULL DEFAULT '',
-  `element_order` INT(6) NOT NULL DEFAULT 1,
-  `element_visible` INT(1) NOT NULL DEFAULT '1',
-  `element_slider_id` INT(8) UNSIGNED,
+  `element_order` INT(6) NOT NULL DEFAULT '1',
+  `element_visible` INT(1) DEFAULT '0',
+  `element_slider_id` INT(8) UNSIGNED DEFAULT NULL,
   PRIMARY KEY (`element_id`)
-) ENGINE=MyISAM;
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;

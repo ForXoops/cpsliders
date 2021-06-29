@@ -81,7 +81,7 @@ class Element extends \XoopsObject {
         $form->addElement(new \XoopsFormText(_AM_CPSLIDERS_ELEMENTS_LINK, 'element_url', 80, 255, $lien), false);
         
         
-        //image
+        //Element : image
         $helper = Helper::getHelper(basename(dirname(__DIR__)));
         $upload_size = $helper->getConfig('maxsize_image', 104858);
 
@@ -93,6 +93,7 @@ class Element extends \XoopsObject {
         foreach ($image_array_img as $image_img) {			
             $imageselect_img->addOption("$image_img", $image_img);
         }
+
         $imageselect_img->setExtra("onchange='cpslidersImgSelected(\"image_img2\", \"element_img\", \"" . $uploadirectory . "\", \"\", \"" . XOOPS_URL . "\")'");
         $imgtray_img->addElement($imageselect_img, false);
         $imgtray_img->addElement(new \XoopsFormLabel('', "<br><a class='lightbox' id='image_img2_link' href='" . XOOPS_URL . '/' . $uploadirectory . '/' . $blank_img . "'><img src='" . XOOPS_URL . '/' . $uploadirectory . '/' . $blank_img . "' name='image_img2' id='image_img2' alt='' style='max-width:200px'></a>"));
@@ -103,8 +104,10 @@ class Element extends \XoopsObject {
         $fileseltray_img->addElement(new \XoopsFormLabel(''), false);
         $imgtray_img->addElement($fileseltray_img);
         $form->addElement($imgtray_img);
+
         // Element : element_order
         $form->addElement(new \XoopsFormText(_AM_CPSLIDERS_ELEMENTS_ORDER, 'element_order', 5, 5, $ordre, true));
+
         // Element : visible
         $formvis    = new \XoopsFormRadioYN(_AM_CPSLIDERS_ELEMENTS_FORM_VISIBLE, 'element_visible', $this->getVar('element_visible'), _YES, _NO );
         $form->addElement($formvis);

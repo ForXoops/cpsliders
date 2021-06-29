@@ -27,13 +27,16 @@ include_once 'common.php';
 
 // ---------------- Admin Main ----------------
 \define('_MI_CPSLIDERS_NAME', 'Sliders');
-\define('_MI_CPSLIDERS_DESC', 'Module de gestion des sliders');
+\define('_MI_CPSLIDERS_DESC', 'Manage sliders and slideshow');
 // ---------------- Admin Menu ----------------
 \define('_MI_CPSLIDERS_ADMENU1', 'Dashboard');
 \define('_MI_CPSLIDERS_ADMENU2', 'Sliders');
 \define('_MI_CPSLIDERS_ADMENU3', 'Elements');
 \define('_MI_CPSLIDERS_ADMENU4', 'Feedback');
 \define('_MI_CPSLIDERS_ABOUT', 'About');
+// Blocks
+define('_MI_CPSLIDERS_BLOCK1', "Slider block");
+define('_MI_CPSLIDERS_BLOCK1_DESC', "Manage sliders to display");
 // Config
 \define('_MI_CPSLIDERS_EDITOR_ADMIN', 'Editor admin');
 \define('_MI_CPSLIDERS_EDITOR_ADMIN_DESC', 'Select the editor which should be used in admin area for text area fields');
