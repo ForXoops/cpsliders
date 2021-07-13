@@ -1,7 +1,4 @@
 <?php
-
-namespace XoopsModules\Cpsliders;
-
 /*
  You may not change or alter any portion of this comment or credits
  of supporting developers from this source code or any supporting source code
@@ -13,12 +10,18 @@ namespace XoopsModules\Cpsliders;
 */
 
 /**
- * oledrion
+ * Element class object
  *
- * @copyright   {@link https://xoops.org/ XOOPS Project}
- * @license     {@link http://www.fsf.org/copyleft/gpl.html GNU public license}
- * @author      Hervé Thouzard (http://www.herve-thouzard.com/)
+ * @copyright      2020 XOOPS Project (https://xooops.org)
+ * @license        GPL 2.0 or later
+ * @package        cpsliders
+ * @since          1.0
+ * @min_xoops      2.5.10
+ * @author         Dorian
+ * @author         ForMuss
  */
+
+namespace XoopsModules\Cpsliders;
 
 use Xmf\Module\Admin;
 use Xmf\Request;
@@ -28,7 +31,10 @@ use Xmf\Request;
  */
 class Element extends \XoopsObject {
 
-
+    /**
+     * Element constructor
+     *
+     */
     public function __construct()
     {
         $this->initVar('element_id', XOBJ_DTYPE_INT, null, false);
@@ -37,11 +43,14 @@ class Element extends \XoopsObject {
         $this->initVar('element_img', XOBJ_DTYPE_TXTBOX, null, false);
         $this->initVar('element_url', XOBJ_DTYPE_TXTBOX, null, false);
         $this->initVar('element_order', XOBJ_DTYPE_INT, null, false);
-        $this->initVar('element_visible', XOBJ_DTYPE_INT, 0, false);
+        $this->initVar('element_visible', XOBJ_DTYPE_INT, 1, false);
         $this->initVar('element_slider_id', XOBJ_DTYPE_INT, null, false);
     }
 
-
+    /**
+     * Element form
+     * @return XoopsThemeForm
+     */
     public function getForm()
     {
         $title = $this->isNew() ? sprintf(_AM_CPSLIDERS_ELEMENTS_FORM_ADD) : sprintf(_AM_CPSLIDERS_ELEMENTS_FORM_EDIT);
@@ -134,10 +143,7 @@ class Element extends \XoopsObject {
         $buttonTray->addElement($buttonCancel);
         
         $form->addElement($buttonTray);
-        // submit
-        //$form->addElement(new \XoopsFormButton('', 'submit', _SUBMIT, 'submit'));
+
         return $form;
     }
 }
-
-?>

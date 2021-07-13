@@ -10,11 +10,15 @@
  */
 
 /**
- * @copyright       {@link http://sourceforge.net/projects/xoops/ The XOOPS Project}
- * @license         {@link http://www.gnu.org/licenses/gpl-2.0.html GNU Public License}
- * @package         cpsliders
- * @since           1.0
- * @author          Dorian
+ * Manage edit and display cpsliders block
+ * 
+ * @copyright      2020 XOOPS Project (https://xooops.org)
+ * @license        GPL 2.0 or later
+ * @package        cpsliders
+ * @since          1.0
+ * @min_xoops      2.5.10
+ * @author         Dorian
+ * @author         ForMuss
  */
 
 defined('XOOPS_ROOT_PATH') || die('Restricted access');
@@ -24,7 +28,7 @@ use Xmf\Module\Admin;
 use Xmf\Request;
 
 /**
- * @param array $options array( 0 => id_slider| 1 => interval(ms)| 2 => type(carousel ou logos)| 3 => unique_id )
+ * @param array $options array( 0 => id_slider| 1 => interval(ms)| 2 => type(carousel ou logos)| 3 => type | 4 => unique_id )
  *
  * @return array|bool
  */
@@ -41,13 +45,15 @@ function cpsliders_block_show($options)
     $block["interval"]  = $options[1];
     $block["type"]      = $options[2];
     $block["content"]   = $slidersHandler->renderSlider($block["slider_id"], $block["interval"], $block["type"]);
- 
+    
+    $GLOBALS['xoTheme']->addStylesheet(CPSLIDERS_URL . '/assets/css/style.css');
+
     if ( $block["type"] == 'logos' ) {
         $GLOBALS['xoTheme']->addScript("browse.php?Frameworks/jquery/jquery.js");
         $GLOBALS['xoTheme']->addScript(CPSLIDERS_URL . '/assets/js/slick.js');
         $GLOBALS['xoTheme']->addScript(CPSLIDERS_URL . '/assets/js/cpsliders.js');
         $GLOBALS['xoTheme']->addStylesheet(CPSLIDERS_URL . '/assets/css/slick.css');
-        $GLOBALS['xoTheme']->addStylesheet(CPSLIDERS_URL . '/assets/css/style.css');
+        
     } 
 
     if ('template' === $options[3]) {

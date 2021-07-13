@@ -12,9 +12,13 @@
 /**
  * cpsliders module
  *
- * @copyright       XOOPS Project (https://xoops.org)
- * @license         GNU GPL 2 (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html)
- * @author          Dorian
+ * @copyright      2020 XOOPS Project (https://xooops.org)
+ * @license        GPL 2.0 or later
+ * @package        cpsliders
+ * @since          1.0
+ * @min_xoops      2.5.10
+ * @author         Dorian
+ * @author         ForMuss
  */
 
 
@@ -38,7 +42,7 @@ class CpslidersBlockForm extends XoopsForm
     }
 
     /**
-     * render
+     * Render form block
      *
      * @return string
      */

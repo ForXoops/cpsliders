@@ -13,15 +13,17 @@ declare(strict_types=1);
 */
 
 /**
- * Complus Sliders module for xoops
+ * Sliders module for xoops
  *
  * @copyright      2020 XOOPS Project (https://xooops.org)
  * @license        GPL 2.0 or later
  * @package        cpsliders
  * @since          1.0
- * @min_xoops      2.5.9
- * @author         Dorian - Email:<info@email.com> - Website:<http://xoops.org>
+ * @min_xoops      2.5.10
+ * @author         Dorian
+ * @author         ForMuss
  */
+
 require __DIR__ . '/header.php';
 $templateMain = 'cpsliders_admin_about.tpl';
 $GLOBALS['xoopsTpl']->assign('navigation', $adminObject->displayNavigation('about.php'));

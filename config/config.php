@@ -41,24 +41,14 @@ return (object)[
 	],
 	'uploadFolders'  => [
 		XOOPS_UPLOAD_PATH . '/' . $moduleDirName,
-		XOOPS_UPLOAD_PATH . '/' . $moduleDirName . '/sliders',
-		XOOPS_UPLOAD_PATH . '/' . $moduleDirName . '/elements',
 		XOOPS_UPLOAD_PATH . '/' . $moduleDirName . '/images',
 		XOOPS_UPLOAD_PATH . '/' . $moduleDirName . '/images/sliders',
 		XOOPS_UPLOAD_PATH . '/' . $moduleDirName . '/images/elements',
-		XOOPS_UPLOAD_PATH . '/' . $moduleDirName . '/files',
-		XOOPS_UPLOAD_PATH . '/' . $moduleDirName . '/files/sliders',
-		XOOPS_UPLOAD_PATH . '/' . $moduleDirName . '/files/elements',
-		XOOPS_UPLOAD_PATH . '/' . $moduleDirName . '/temp',
 	],
 	'copyBlankFiles'  => [
 		XOOPS_UPLOAD_PATH . '/' . $moduleDirName . '/images',
 		XOOPS_UPLOAD_PATH . '/' . $moduleDirName . '/images/sliders',
 		XOOPS_UPLOAD_PATH . '/' . $moduleDirName . '/images/elements',
-	],
-	'copyTestFolders'  => [
-		[XOOPS_ROOT_PATH . '/modules/' . $moduleDirName . '/testdata/uploads',
-		XOOPS_UPLOAD_PATH . '/' . $moduleDirName],
 	],
 	'templateFolders'  => [
 		'/templates/',

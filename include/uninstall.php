@@ -59,19 +59,6 @@ function xoops_module_uninstall_cpsliders(\XoopsModule $module)
         }
         unset($dirInfo);
     }
-    /*
-    //------------ START ----------------
-    //------------------------------------------------------------------
-    // Remove xsitemap.xml from XOOPS root folder if it exists
-    //------------------------------------------------------------------
-    $xmlfile = $GLOBALS['xoops']->path('xsitemap.xml');
-    if (is_file($xmlfile)) {
-        if (false === ($delOk = \unlink($xmlfile))) {
-            $module->setErrors(\sprintf(_AM_CPSLIDERS_ERROR_BAD_REMOVE, $xmlfile));
-        }
-    }
-//    return $success && $delOk; // use this if you're using this routine
-*/
 
     return $success;
     //------------ END  ----------------

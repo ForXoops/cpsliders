@@ -13,9 +13,13 @@
 /**
  * Sliders plugin for xoops modules
  *
- * @copyright      XOOPS Project  (https://xoops.org)
- * @license        GNU GPL 2 or later (http://www.gnu.org/licenses/gpl-2.0.html)
+ * @copyright      2020 XOOPS Project (https://xooops.org)
+ * @license        GPL 2.0 or later
+ * @package        cpsliders
+ * @since          1.0
+ * @min_xoops      2.5.10
  * @author         Dorian
+ * @author         ForMuss
  */
 
 
@@ -28,7 +32,7 @@ $currentFile        = basename(__FILE__);
 $op                 = Request::getString('op', 'list');
 $moduleDirName      = $GLOBALS['xoopsModule']->getVar('dirname');
 $moduleDirNameUpper = \mb_strtoupper($moduleDirName);
-\xoops_loadLanguage('sliders', $moduleDirName);
+xoops_loadLanguage('sliders', $moduleDirName);
 
 $adminObject->displayNavigation($currentFile);
 
@@ -36,8 +40,9 @@ $adminObject->displayNavigation($currentFile);
 $xoTheme->addStylesheet(XOOPS_URL . '/modules/system/css/admin.css');
 $xoTheme->addScript('modules/system/js/admin.js');
 
-$op = Request::getCmd('op', 'list');
 switch ($op) {
+
+    // Display sliders list
     case 'list':
     default:
         $adminObject->addItemButton(_AM_CPSLIDERS_SLIDERS_ADD, $currentFile . '?op=add', 'add');
@@ -64,6 +69,8 @@ switch ($op) {
         $xoopsTpl->assign('sliders', $sliders);
 
         break;
+
+    // Add slider
     case 'add':
         // Module admin
         $adminObject->addItemButton(_AM_CPSLIDERS_SLIDERS_LIST, $currentFile, 'list');
@@ -75,6 +82,8 @@ switch ($op) {
         // Assign form
         $xoopsTpl->assign('form', $form->render());
         break;
+
+    // Edit slider
     case 'edit':
         $adminObject->addItemButton(_AM_CPSLIDERS_SLIDERS_LIST, $currentFile, 'list');
         $xoopsTpl->assign('renderbutton', $adminObject->renderButton());
@@ -89,6 +98,8 @@ switch ($op) {
         }
 
         break;
+
+    // Save slider
     case 'save':
         if (!$GLOBALS['xoopsSecurity']->check()) {
             redirect_header($currentFile, 3, implode('<br />', $GLOBALS['xoopsSecurity']->getErrors()));
@@ -109,6 +120,8 @@ switch ($op) {
             $xoopsTpl->assign('message_error', $obj->getHtmlErrors());
         }
         break;
+
+    // Delete slider
     case 'delete':
         $slider_id = Request::getInt('slider_id', 0);
         $obj       = $slidersHandler->get($slider_id);

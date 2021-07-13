@@ -19,8 +19,9 @@ declare(strict_types=1);
  * @license        GPL 2.0 or later
  * @package        cpsliders
  * @since          1.0
- * @min_xoops      2.5.9
- * @author         Dorian - Email:<info@email.com> - Website:<http://xoops.org>
+ * @min_xoops      2.5.10
+ * @author         Dorian
+ * @author         ForMuss
  */
 
 

@@ -11,17 +11,20 @@
 */
 
 /**
- * elements plugin for xoops modules
+ * Elements plugin for xoops modules
  *
- * @copyright      XOOPS Project  (https://xoops.org)
- * @license        GNU GPL 2 or later (http://www.gnu.org/licenses/gpl-2.0.html)
+ * @copyright      2020 XOOPS Project (https://xooops.org)
+ * @license        GPL 2.0 or later
+ * @package        cpsliders
+ * @since          1.0
+ * @min_xoops      2.5.10
  * @author         Dorian
+ * @author         ForMuss
  */
 
 
 use Xmf\Request;
 
-$currentFile = basename(__FILE__);
 include __DIR__ . '/header.php';
 
 // It recovered the value of argument op in URL$
@@ -29,7 +32,7 @@ $currentFile        = basename(__FILE__);
 $op                 = Request::getString('op', 'list');
 $moduleDirName      = $GLOBALS['xoopsModule']->getVar('dirname');
 $moduleDirNameUpper = \mb_strtoupper($moduleDirName);
-\xoops_loadLanguage('elements', $moduleDirName);
+xoops_loadLanguage('elements', $moduleDirName);
 
 $adminObject->displayNavigation($currentFile);
 
@@ -38,12 +41,16 @@ $xoTheme->addStylesheet(XOOPS_URL . '/modules/system/css/admin.css');
 $xoTheme->addStylesheet(XOOPS_URL . '/modules/system/css/ui/' . xoops_getModuleOption('jquery_theme', 'system') . '/ui.all.css');
 $xoTheme->addStylesheet(XOOPS_URL . '/modules/system/css/lightbox.css');
 $xoTheme->addStylesheet('modules/cpsliders/assets/css/admin/style.css');
+
+// Define Scripts
 $xoTheme->addScript('browse.php?Frameworks/jquery/plugins/jquery.ui.js');
 $xoTheme->addScript('browse.php?Frameworks/jquery/plugins/jquery.lightbox.js');
 $xoTheme->addScript('modules/cpsliders/assets/js/admin.js');
 $xoTheme->addScript('modules/system/js/admin.js');
 
 switch ($op) {
+
+    // Displa element list
     case 'list':
     default: 
         $selected_slider_id = Request::getInt('slider_id', 0);
@@ -74,7 +81,7 @@ switch ($op) {
             $elements[] = $element;
         }
 
-        //Options pour la liste des sliders
+        // Filter by sliders
         $slider_options = '<option value="0">'._AM_CPSLIDERS_ELEMENTS_SLIDER_DD_SHOW_ALL.'</option>';
         $slider_criteria = new \Criteria('');
         $slider_criteria->setSort('slider_title');
@@ -87,6 +94,8 @@ switch ($op) {
         $xoopsTpl->assign('elements', $elements);
         $xoopsTpl->assign('slider_options', $slider_options);
         break;
+
+    // Add element
     case 'add':
         // Module admin
         $adminObject->addItemButton(_AM_CPSLIDERS_ELEMENTS_LIST, $currentFile, 'list');
@@ -98,7 +107,8 @@ switch ($op) {
         // Assign form
         $xoopsTpl->assign('form', $form->render());
         break;
-
+    
+    // Edit element
     case 'edit':
         $adminObject->addItemButton(_AM_CPSLIDERS_ELEMENTS_LIST, 'elements.php', 'list');
         $xoopsTpl->assign('renderbutton', $adminObject->renderButton());
@@ -113,6 +123,8 @@ switch ($op) {
         }
 
         break;
+
+    // Save element
     case 'save':
         if (!$GLOBALS['xoopsSecurity']->check()) {
             redirect_header('elements.php', 3, implode('<br />', $GLOBALS['xoopsSecurity']->getErrors()));
@@ -170,6 +182,8 @@ switch ($op) {
         }
 
         break;
+
+    // Delete element
     case 'delete':
         $element_id = Request::getInt('element_id', 0);
         $obj        = $elementsHandler->get($element_id);
@@ -193,7 +207,8 @@ switch ($op) {
         }
         
         break;
-    // update status
+
+    // Update status
     case 'element_update_status':
         $id = Request::getInt('id', 0);
         if ($id > 0) {
@@ -206,6 +221,8 @@ switch ($op) {
             $xoopsTpl->assign('message_error', $obj->getHtmlErrors());
         }
         break;
+
+    // Reorder elements
     case 'order':
         if (isset($_POST['elem'])) {
             $i = 10;

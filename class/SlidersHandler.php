@@ -1,10 +1,4 @@
 <?php
-
-namespace XoopsModules\Cpsliders;
-
-
-use XoopsModules\Cpsliders;
-
 /*
  You may not change or alter any portion of this comment or credits
  of supporting developers from this source code or any supporting source code
@@ -16,14 +10,20 @@ use XoopsModules\Cpsliders;
 */
 
 /**
- * oledrion
+ * Sliders persistent handler
  *
- * @copyright   {@link https://xoops.org/ XOOPS Project}
- * @license     {@link http://www.fsf.org/copyleft/gpl.html GNU public license}
- * @author      Dorian
+ * @copyright      2020 XOOPS Project (https://xooops.org)
+ * @license        GPL 2.0 or later
+ * @package        cpsliders
+ * @since          1.0
+ * @min_xoops      2.5.10
+ * @author         Dorian
+ * @author         ForMuss
  */
 
+namespace XoopsModules\Cpsliders;
 
+use XoopsModules\Cpsliders;
 use Xmf\Module\Admin;
 use Xmf\Request;
 
@@ -32,7 +32,10 @@ use Xmf\Request;
  */
 class SlidersHandler extends \XoopsPersistableObjectHandler
 {
-
+    /**
+     * SlidersHandler constructor
+     *
+     */
     public function __construct(\XoopsDatabase $db = null)
     {
         //                          Table             Classe          Id
@@ -82,7 +85,7 @@ class SlidersHandler extends \XoopsPersistableObjectHandler
                     
                     $el_num++;
                 }
-                $result .= '<div id="carouselSlider'.$slider_id.'" class="carousel slide" data-ride="carousel">';
+                $result .= '<div id="carouselSlider'.$slider_id.'" class="carousel slide carousel-fade" data-ride="carousel">';
                 $result .= '<ol class="carousel-indicators">';
                 $result .= $carousel_indicators;
                 $result .= '</ol>';

@@ -79,11 +79,6 @@ function xoops_module_install_cpsliders(\XoopsModule $module)
 
     //  ---  COPY blank.gif FILES ---------------
     if ($configurator->copyBlankFiles && \is_array($configurator->copyBlankFiles)) {
-        /*$file = \dirname(__DIR__) . '/assets/images/blank.gif';
-        foreach (\array_keys($configurator->copyBlankFiles) as $i) {
-            $dest = $configurator->copyBlankFiles[$i] . '/blank.gif';
-            $utility::copyFile($file, $dest);
-        }*/
 		$file = \dirname(__DIR__) . '/assets/images/blank.png';
         foreach (\array_keys($configurator->copyBlankFiles) as $i) {
             $dest = $configurator->copyBlankFiles[$i] . '/blank.png';

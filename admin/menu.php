@@ -19,8 +19,9 @@ declare(strict_types=1);
  * @license        GPL 2.0 or later
  * @package        cpsliders
  * @since          1.0
- * @min_xoops      2.5.9
- * @author         Dorian - Email:<info@email.com> - Website:<http://xoops.org>
+ * @min_xoops      2.5.10
+ * @author         Dorian
+ * @author         ForMuss
  */
 
 $dirname       = \basename(\dirname(__DIR__));
@@ -32,7 +33,7 @@ $sysPathIcon32 = $moduleInfo->getInfo('sysicons32');
 $adminmenu[] = [
 	'title' => _MI_CPSLIDERS_ADMENU1,
 	'link' => 'admin/index.php',
-	'icon' => $sysPathIcon32.'/dashboard.png',
+	'icon' => $sysPathIcon32.'/home.png',
 ];
 $adminmenu[] = [
 	'title' => _MI_CPSLIDERS_ADMENU2,

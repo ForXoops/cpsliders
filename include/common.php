@@ -19,8 +19,9 @@ declare(strict_types=1);
  * @license        GPL 2.0 or later
  * @package        cpsliders
  * @since          1.0
- * @min_xoops      2.5.9
- * @author         Dorian - Email:<info@email.com> - Website:<http://xoops.org>
+ * @min_xoops      2.5.10
+ * @author         Dorian
+ * @author         ForMuss
  */
 if (!\defined('XOOPS_ICONS32_PATH')) {
 	\define('XOOPS_ICONS32_PATH', XOOPS_ROOT_PATH . '/Frameworks/moduleclasses/icons/32');
@@ -44,7 +45,8 @@ if (!\defined('XOOPS_ICONS32_URL')) {
 \define('CPSLIDERS_UPLOAD_SHOTS_PATH', CPSLIDERS_UPLOAD_PATH . '/images/shots');
 \define('CPSLIDERS_UPLOAD_SHOTS_URL', CPSLIDERS_UPLOAD_URL . '/images/shots');
 \define('CPSLIDERS_ADMIN', CPSLIDERS_URL . '/admin/index.php');
-$localLogo = CPSLIDERS_IMAGE_URL . '/dorian_logo.png';
+
+$localLogo = CPSLIDERS_IMAGE_URL . '/dtlogo.png';
 // Module Information
 $copyright = "<a href='http://xoops.org' title='XOOPS Project' target='_blank'><img src='" . $localLogo . "' alt='XOOPS Project' /></a>";
 include_once XOOPS_ROOT_PATH . '/class/xoopsrequest.php';

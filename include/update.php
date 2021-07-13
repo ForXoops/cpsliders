@@ -38,7 +38,7 @@ function xoops_module_update_cpsliders($module, $prev_version = null)
 
     $ret = cpsliders_check_db($module);
 
-    //check upload directory
+    // check upload directory
 	include_once __DIR__ . '/install.php';
     $ret = xoops_module_install_cpsliders($module);
 

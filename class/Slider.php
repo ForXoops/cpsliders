@@ -1,7 +1,4 @@
 <?php
-
-namespace XoopsModules\Cpsliders;
-
 /*
  You may not change or alter any portion of this comment or credits
  of supporting developers from this source code or any supporting source code
@@ -19,24 +16,32 @@ namespace XoopsModules\Cpsliders;
  * @license        GPL 2.0 or later
  * @package        cpsliders
  * @since          1.0
- * @min_xoops      2.5.9
- * @author         Dorian - Email:<info@email.com> - Website:<http://xoops.org>
+ * @min_xoops      2.5.10
+ * @author         Dorian
+ * @author         ForMuss
  */
 
+namespace XoopsModules\Cpsliders; 
 
 /**
- * Gestion des sliders
+ * Manage sliders
  */
 class Slider extends \XoopsObject {
 
-
+    /**
+     * Slider constructor
+     *
+     */
     public function __construct()
     {
         $this->initVar('slider_id', XOBJ_DTYPE_INT, null, false);
         $this->initVar('slider_title', XOBJ_DTYPE_TXTBOX, null, false);
     }
 
-
+    /**
+     * Slider form
+     * @return XoopsThemeForm
+     */
     public function getForm()
     {
         $title = $this->isNew() ? sprintf(_AM_CPSLIDERS_SLIDERS_FORM_ADD) : sprintf(_AM_CPSLIDERS_SLIDERS_FORM_EDIT);
@@ -50,9 +55,10 @@ class Slider extends \XoopsObject {
             $title = "";
         }
 
+        // Slider: title
         $form->addElement(new \XoopsFormText(_AM_CPSLIDERS_SLIDERS_FORM_TITLE, 'slider_title', 60, 255, $title), true);
 
-        // form: button tray
+        // Slider: button tray
         $buttonTray = new \XoopsFormElementTray('', '');
         $buttonTray->addElement(new \XoopsFormHidden('op', 'save'));
 
@@ -74,11 +80,8 @@ class Slider extends \XoopsObject {
         $buttonTray->addElement($buttonCancel);
         
         $form->addElement($buttonTray);
-        // submit
-        //$form->addElement(new \XoopsFormButton('', 'submit', _SUBMIT, 'submit'));
+
         return $form;
     }
 
 }
-
-?>
