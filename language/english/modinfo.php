@@ -65,4 +65,6 @@ define('_MI_CPSLIDERS_BLOCK1_DESC', "Manage sliders to display");
 \define('_MI_CPSLIDERS_BOOKMARKS', 'Social Bookmarks');
 \define('_MI_CPSLIDERS_BOOKMARKS_DESC', 'Show Social Bookmarks in the single page');
 \define('_MI_CPSLIDERS_SIZE_MB', 'MB');
+\define('_MI_CPSLIDERS_MAXSIZE_IMAGE', 'Maximum upload size');
+\define('_MI_CPSLIDERS_MIMETYPES_IMAGE', 'Allowed mimetype to upload');
 // ---------------- End ----------------
