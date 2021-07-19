@@ -40,6 +40,7 @@ define('_AM_CPSLIDERS_ELEMENTS_LINKED_SLIDER', 'Linked slider');
 define('_AM_CPSLIDERS_ELEMENTS_ACTION', 'Action');
 define('_AM_CPSLIDERS_CONTENT_STATUS_A', 'Active');
 define('_AM_CPSLIDERS_CONTENT_STATUS_NA', 'Disabled');
+define('_AM_CPSLIDERS_ELEMENTS_CLONE', 'Clone');
 //Form
 define('_AM_CPSLIDERS_ELEMENTS_FORM_ADD', 'Add an element');
 define('_AM_CPSLIDERS_ELEMENTS_FORM_EDIT', 'Edit an élément');

@@ -109,9 +109,9 @@ function cpsliders_block_edit($options)
     $formDisplayMethodSelect->addOptionArray($displayMethodsList);
     $form->addElement( $formDisplayMethodSelect);
 
-    if ($options[4] == 0) {
+    if (!$options[4] || ('clone' === Request::getCmd('op', '', 'GET'))) {
         $options[4] = time();
-    } 
+    }
 
     $eleUniqueID = new \XoopsFormText(_AM_CPSLIDERS_BLOCK_SLIDER_UNIQUE_ID, 'options[4]', 50, 255, $options[4]);
     $eleUniqueID->setDescription(_AM_CPSLIDERS_BLOCK_SLIDER_UNIQUE_ID_DESC);

@@ -124,6 +124,29 @@ switch ($op) {
 
         break;
 
+    // Clone element
+    case 'clone': 
+        $adminObject->addItemButton(_AM_CPSLIDERS_ELEMENTS_LIST, 'elements.php', 'list');
+        $xoopsTpl->assign('renderbutton', $adminObject->renderButton());
+        $element_id = Request::getInt('element_id', 0);
+
+        if ($element_id == 0) {
+            $xoopsTpl->assign('message_error', "erreur");
+        } else {
+            $obj = $elementsHandler->get($element_id);
+            $clone = $elementsHandler->create();
+            $clone->setVar('element_title', _AM_CPSLIDERS_ELEMENTS_CLONE . ' ' . $obj->getVar('element_title') );
+            $clone->setVar('element_description', $obj->getVar('element_description') );
+            $clone->setVar('element_img', $obj->getVar('element_img') );
+            $clone->setVar('element_url', $obj->getVar('element_url') );
+            $clone->setVar('element_order', $obj->getVar('element_order') );
+            $clone->setVar('element_visible', $obj->getVar('element_visible') );
+            $clone->setVar('element_slider_id', $obj->getVar('element_slider_id') );
+            $form = $clone->getForm(true);
+            $xoopsTpl->assign('form', $form->render()); 
+        }
+        break;
+
     // Save element
     case 'save':
         if (!$GLOBALS['xoopsSecurity']->check()) {
@@ -141,6 +164,8 @@ switch ($op) {
         $element['order']                = Request::getString('element_order', '', 'POST');
         $element['visible']              = Request::getString('element_visible', '', 'POST');
         $element['element_slider_id']    = Request::getString('element_slider_id', '', 'POST');
+
+        $element_img = Request::getString('element_img', '');
 
         //Image
         $uploadirectory = CPSLIDERS_UPLOAD_IMAGE_PATH . '/elements/';

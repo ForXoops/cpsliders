@@ -30,7 +30,7 @@
             <th><{$smarty.const._AM_CPSLIDERS_ELEMENTS_LINK}></th>
             <th><{$smarty.const._AM_CPSLIDERS_ELEMENTS_ORDER}></th>
             <th><{$smarty.const._AM_CPSLIDERS_ELEMENTS_VISIBLE}></th>
-            <th><{$smarty.const._AM_CPSLIDERS_ELEMENTS_ACTION}></th>
+            <th style="width: 120px;"><{$smarty.const._AM_CPSLIDERS_ELEMENTS_ACTION}></th>
         </tr>
         </thead>
         <tbody class="elements-list">
@@ -57,6 +57,8 @@
                     <a class="tooltip" href="elements.php?op=edit&amp;element_id=<{$element.id}>" title="<{$smarty.const._EDIT}>"><img src="<{xoAdminIcons edit.png}>"
                                                                                                         alt="<{$smarty.const._EDIT}>"
                                                                                                         title="<{$smarty.const._EDIT}>"/></a>
+                    <a class="tooltip" href="elements.php?op=clone&amp;element_id=<{$element.id}>" title="<{$smarty.const._AM_CPSLIDERS_ELEMENTS_CLONE}>">
+                        <img src="<{xoAdminIcons clone.png}>" alt="<{$smarty.const._MA_XMNEWS_CLONE}>"></a>                                                                                        
                     &nbsp;<a class="tooltip" href="elements.php?op=delete&amp;element_id=<{$element.id}>" title="<{$smarty.const._DELETE}>"><img
                                 src="<{xoAdminIcons delete.png}>" alt="<{$smarty.const._DELETE}>" title="<{$smarty.const._DELETE}>"</a>
                 </td>

@@ -51,7 +51,7 @@ class Element extends \XoopsObject {
      * Element form
      * @return XoopsThemeForm
      */
-    public function getForm()
+    public function getForm($clone = false)
     {
         $title = $this->isNew() ? sprintf(_AM_CPSLIDERS_ELEMENTS_FORM_ADD) : sprintf(_AM_CPSLIDERS_ELEMENTS_FORM_EDIT);
 
@@ -60,8 +60,10 @@ class Element extends \XoopsObject {
         $form = new \XoopsThemeForm($title, 'form', $_SERVER['REQUEST_URI'], 'post', true);
         $form->setExtra('enctype="multipart/form-data"');
 
-        if (!$this->isNew()) {
-            $form->addElement(new \XoopsFormHidden('element_id', $this->getVar('element_id')));
+        if (!$this->isNew() || $clone == true) {
+            if($clone == false) {
+                $form->addElement(new \XoopsFormHidden('element_id', $this->getVar('element_id')));
+            }
             $title          = $this->getVar('element_title');
             $description    = $this->getVar('element_description');
             $lien           = $this->getVar('element_url');
